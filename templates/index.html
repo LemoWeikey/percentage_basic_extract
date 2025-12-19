@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percent Extractor AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="ph ph-magic-wand"></i>
+                <span>PercentExtractor</span>
+            </div>
+            <p class="subtitle">Extract precise material compositions from Excel files.</p>
+        </header>
+
+        <main>
+            <!-- Step 1: Upload -->
+            <div id="upload-step" class="glass-panel">
+                <div class="drop-zone" id="drop-zone">
+                    <div class="icon-container">
+                        <i class="ph ph-upload-simple"></i>
+                    </div>
+                    <h3>Upload Excel File</h3>
+                    <p>Click here to <span id="browse-link">browse</span> or drag & drop</p>
+                </div>
+                <input type="file" id="file-input" accept=".xlsx" style="display: none;">
+            </div>
+
+            <!-- Step 2: Select Column -->
+            <div id="column-step" class="glass-panel hidden">
+                <h3 style="margin-bottom: 0.5rem;">Select Column</h3>
+                <p style="color: var(--text-muted);">Which column contains the descriptions?</p>
+                <div class="select-wrapper">
+                    <select id="column-select">
+                        <option value="" disabled selected>Loading columns...</option>
+                    </select>
+                </div>
+                <button id="process-btn" class="primary-btn">Process & Download</button>
+            </div>
+
+            <!-- Step 3: Success -->
+            <div id="success-step" class="glass-panel hidden">
+                <div class="icon-container" style="color: #22c55e;">
+                    <i class="ph ph-check-circle"></i>
+                </div>
+                <h3>Extraction Complete!</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Your processed Excel file has been downloaded.
+                </p>
+                <button id="restart-btn" class="primary-btn">Process Another File</button>
+            </div>
+
+            <!-- Loading UI -->
+            <div id="loading-overlay" class="loading-overlay hidden">
+                <div class="spinner"></div>
+                <p id="loading-text">Processing your data...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
